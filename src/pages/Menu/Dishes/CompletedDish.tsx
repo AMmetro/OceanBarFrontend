@@ -15,11 +15,9 @@ function CompletedDish(props:any) {
   const orderDish=()=>{
     // send dishID and Ingridients to..
     // and redirect page to    
-    console.log("dishId=" + nesseryObject.id);
-    console.log("Ingridients" + "????");
-    
+    console.log("send dishId=" + nesseryObject.id);
+    console.log("send Ingridients" + "????");  
   }
-
 
   return (
 
@@ -43,9 +41,10 @@ function CompletedDish(props:any) {
                   <Col xs lg="7"></Col>
                 </Row>
                 <Row>
-                  <p>лук</p>
-                  <p>чеснок</p>
-                  <p>томаты</p>
+               ingr
+               ingr
+               ingr
+               ingr
                   {/* <Col xs={7}>
                     <DishIngridients ingredients={nesseryObject?.ingredients} />
                   </Col> */}
