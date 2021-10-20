@@ -1,10 +1,12 @@
 import React from 'react'
 import {Carousel} from 'react-bootstrap'
-import data from '../../../pages/Menu/DB/foodData'
+// import data from '../../../pages/Menu/DB/foodData'
+import data from '../../../pages/menuPage/Menu/DB/foodData'
 import {useState} from 'react'
 import SliderGallertItem from './SliderGalleryItem'
 import {NavLink} from 'react-router-dom'
-import {PATH} from '../../../pages/Menu/MenuRoutes'
+// import {PATH} from '../../../pages/Menu/MenuRoutes'
+import {PATH} from '../../../pages/menuPage/Menu/MenuRoutes'
 
 function ControlledCarousel() {
   const [index, setIndex] = useState(1)

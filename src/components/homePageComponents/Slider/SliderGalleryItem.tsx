@@ -1,7 +1,6 @@
-import React from 'react'
-import {Carousel} from 'react-bootstrap'
-import data from '../../../pages/Menu/DB/foodData'
-import {useState} from 'react'
+
+// import data from '../../../pages/Menu/DB/foodData'
+// import {useState} from 'react'
 
 
 type ImgData = any
