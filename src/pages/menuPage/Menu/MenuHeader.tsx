@@ -56,6 +56,7 @@ const MenuHeader = () => {
         </Col>
 
       </Row>
+      <hr style={{height: "2px", borderWidth:"0", color: "gray", backgroundColor:"gray"}}  />
     </Container>
   )
 }

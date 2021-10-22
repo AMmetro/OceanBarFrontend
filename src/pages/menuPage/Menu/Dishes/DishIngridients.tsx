@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
-import {Col, Form, Row} from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Col, Form, Row } from 'react-bootstrap'
 
 type IngridientValueType = Boolean[]
 
 function DishIngredients(props: any) {
-  const [renderIngredients, setRenderIng] = useState<Object>(props.ingredients)
+  const [ingredients, setIngredients] = useState<Object>(props.ingredients)
 
-  const ingridientKey = Object.keys(renderIngredients)
-  const ingridientValue: IngridientValueType = Object.values(renderIngredients)
-
-  const toggleIngridient = (el: any) => {
-    const newIngredients = {...renderIngredients}
+  const toggleIngredient = (el: any) => {
+    const copyIngredients = { ...ingredients }
     // @ts-ignore
-    newIngredients[el] = !newIngredients[el]
-    setRenderIng(newIngredients)
-    props.setIngridient(newIngredients)
+    copyIngredients[el] = !copyIngredients[el]
+    setIngredients(copyIngredients)
+    props.setIngridient(copyIngredients)
   }
 
-  const ingridientsItem = ingridientKey.map((ingridient, i) => {
+  const ingredientKey = Object.keys(ingredients)
+  const ingredientValue: IngridientValueType = Object.values(ingredients)
+
+  const ingridientsItem = ingredientKey.map((ingredient, i) => {
     return (
       <>
         {props.isShifting ? (
@@ -25,17 +25,17 @@ function DishIngredients(props: any) {
             <Col xs={3}>
               <Form.Check
                 type='checkbox'
-                checked={!!ingridientValue[i]}
+                checked={!!ingredientValue[i]}
                 onChange={() => {
-                  toggleIngridient(ingridient)
+                  toggleIngredient(ingredient)
                 }}
               />
             </Col>
-            <Col xs={9}>{ingridient}</Col>
+            <Col xs={9}>{ingredient}</Col>
           </Row>
         ) : (
           <ul>
-             {ingridientValue[i] ? <li>{ingridient}</li> :null }           
+            {ingredientValue[i] ? <li>{ingredient}</li> : null}
           </ul>
         )}
       </>

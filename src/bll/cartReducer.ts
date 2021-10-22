@@ -3,7 +3,7 @@ const initState: initStateType = [{id:0},{невыбранно:true}]
 
 export const cartReducer = (state = initState, action: actionType): initStateType => {
     switch (action.type) {
-        case "addDish": {
+        case "addIngridient": {
            
         //    console.log(action.orderedDish);
              
@@ -19,4 +19,4 @@ export const cartReducer = (state = initState, action: actionType): initStateTyp
 
 type actionType = any
 
-export const updateIngridientsAC = (orderedDish: object): actionType => { return { type: "addDish", orderedDish} };
+export const updateIngridientsAC = (orderedDish: object): actionType => { return { type: "addIngridient", orderedDish} };

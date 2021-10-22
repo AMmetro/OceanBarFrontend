@@ -1,26 +1,33 @@
-import {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import { useState } from 'react'
 import DishIngridients from './DishIngridients'
-import {Button, Card, Col, Row} from 'react-bootstrap'
-import {updateIngridientsAC} from "../../../../bll/cartReducer";
+import { Button, Card, Col, Row } from 'react-bootstrap'
+
+
+
+type IngridientValueType = Boolean[]
 
 function ShiftingDish(props: any) {
-  
- 
+
   const [ingredients, setIngredients] = useState<Object>(props.currentDish?.ingredients);
 
-  const updateIngridient = (newIngredients: any) => {
-          setIngredients(newIngredients)
-   }
+  const ingredientKey = Object.keys(ingredients)
+  const ingredientValue: IngridientValueType = Object.values(ingredients)
 
- 
+  let minAcceptableAmountSatisfied = false
+  const minAcceptableAmount = 2
+
+  if (ingredientKey.filter((el, i) => {
+       return (ingredientValue[i])
+     }).length < minAcceptableAmount) { minAcceptableAmountSatisfied = true }
+
+  const updateIngridient = (newIngredients: any) => {
+    setIngredients(newIngredients)
+  }
+
+
   const finishSifting = () => {
-      // dispatch(updateIngridientsAC(
-      // [{id:props.currentDish.id},
-      //   ingredients]
-      // ))
-      props.dishisChanged()
-      props.updateIngredients(ingredients)
+    props.dishisChanged()
+    props.updateIngredients(ingredients)
   }
 
   return (
@@ -29,13 +36,13 @@ function ShiftingDish(props: any) {
         <Row>
           <Card
             border='warning'
-            key='`${dish.id}`'
+            key={`${props.currentDish.id}`}
             className='mb-3 mx-2 my-5'
-            style={{width: '48rem'}}
+            style={{ width: '48rem' }}
           >
             <Row>
               <Col xs lg='7'>
-                <img style={{width: '100%'}} src={props.currentDish?.image} />
+                <img style={{ width: '100%' }} src={props.currentDish?.image} />
               </Col>
               <Col xs lg='5'>
                 <Card.Title>
@@ -52,7 +59,8 @@ function ShiftingDish(props: any) {
                     <DishIngridients
                       isShifting={true}
                       setIngridient={updateIngridient}
-                      ingredients={props.currentDish?.ingredients}
+                      // ingredients={props.currentDish?.ingredients}
+                      ingredients={ingredients}
                     />
                   </Col>
                   <Col xs={5}>
@@ -61,13 +69,14 @@ function ShiftingDish(props: any) {
                       onClick={finishSifting}
                       variant='outline-secondary'
                       size='sm'
+                      disabled={minAcceptableAmountSatisfied}
                     >
                       готово
                     </Button>
                   </Col>
                 </Row>
                 <Row>
-                  <Row><br/></Row>
+                  <Row><br /></Row>
                   <Col sm={5}>
                     <h5>Вес: {props.currentDish?.weight}</h5>
                   </Col>

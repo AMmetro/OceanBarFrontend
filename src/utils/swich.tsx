@@ -23,7 +23,10 @@ const SwitchPager = () => {
         </Route>
         <Route path='/menu'>
           <Menu/>
-          <Redirect to='/menu/soup'/>
+          {/* <Redirect to='/menu/soup'/> */}
+        </Route>
+        <Route path='/dish'>
+            <Menu/>
         </Route>
         <Route path='/cart'>
           <Cart />

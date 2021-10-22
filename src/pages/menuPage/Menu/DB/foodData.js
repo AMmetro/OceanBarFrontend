@@ -6,6 +6,7 @@ const foodData = [
       name: 'Тартар',
       prise: '120',
       weight: '500г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6787/wide/AdobeStock_275611083_%D0%B8%D1%81%D0%BF%D1%80.jpg?1564142039',
       ingredients: {авокадо: true, зелень: true, лук: true, масло: true}
@@ -15,6 +16,7 @@ const foodData = [
       name: 'Тунец',
       prise: '150',
       weight: '400г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6788/wide/AdobeStock_166014726_result.jpeg?1564134468',
       ingredients: {кунжут: true, белок: true, соль: true, масло: true},
@@ -24,6 +26,7 @@ const foodData = [
       name: 'Мидии',
       prise: '90',
       weight: '450г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6789/wide/AdobeStock_196463507_result.jpeg?1564134469',
       ingredients: {
@@ -39,6 +42,7 @@ const foodData = [
       name: 'Креветки',
       prise: '130',
       weight: '500г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6790/wide/AdobeStock_240785620_result2.jpg?1564147840',
       ingredients: {соус: true, виски: true, мука: true, сливки: true},
@@ -48,6 +52,7 @@ const foodData = [
       name: 'Магуро',
       prise: '90',
       weight: '400г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/9d4/9d474eac4eeccbadbe68d974a1e65aed.jpg',
       ingredients: {ракушки: true, креветки: true, коньяк: true, соус: true},
@@ -59,6 +64,7 @@ const foodData = [
       name: 'Борщ',
       prise: '100',
       weight: '400г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/resize_cache/iblock/6db/1000_1000_0/6db539b51c19ae13921090e7040b8b81.jpg',
       ingredients: {капуста: true, лук: true, морковь: true, говядина: true},
@@ -88,6 +94,7 @@ const foodData = [
       name: 'Кальмар гриль',
       prise: '180',
       weight: '160г',
+      calories: "1000 ккал",
       image:
         'https://assets.misteram.com.ua/misteram-public/79dea0539d64fd08ab6299692121c845-400x0.png',
       ingredients: {
@@ -112,6 +119,7 @@ const foodData = [
       name: 'Сибас на гриле',
       prise: '190',
       weight: '350г',
+      calories: "1000 ккал",
       image:
         'https://assets.misteram.com.ua/misteram-public/2b0b1203adc13d42ed952214e49a26a8-400x0.png',
       ingredients: {оливки: true, каперсами: true, шалот: true, томат: true},
@@ -121,6 +129,7 @@ const foodData = [
       name: 'Стейк из лосося',
       prise: '200',
       weight: '300г',
+      calories: "1000 ккал",
       image:
         'https://assets.misteram.com.ua/misteram-public/37c9708302888d9eeb327f2956ffc30a-400x0.png',
       ingredients: {лук: true, ром: true, рис: true, сливки: true},
@@ -130,6 +139,7 @@ const foodData = [
       name: 'Креветки магаданские',
       prise: '190',
       weight: '300г',
+      calories: "1000 ккал",
       image:
         'https://assets.misteram.com.ua/misteram-public/92cf9d0b9c2e44be17ff21c5fb4690f3-400x0.png',
       ingredients: {креветки: true, соус: true},
@@ -141,6 +151,7 @@ const foodData = [
       name: 'ХАЦЕЛИМ',
       prise: '890',
       weight: '280г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/ba4/ba4b5d3cfc1858b895b37be225dfe381.jpg',
       ingredients: {
@@ -156,6 +167,7 @@ const foodData = [
       name: 'ЛАТКЕС ',
       prise: '250',
       weight: '100г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/9fe/9fea0c6aee578dfc50a033e7e547e644.jpg',
       ingredients: {соус: true, белок: true, соль: true, масло: true},
@@ -165,6 +177,7 @@ const foodData = [
       name: 'КАРТОШКА',
       prise: '120',
       weight: '410г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/e05/e053b9f5d3613211a48b8ddbec383753.jpg',
       ingredients: {
@@ -180,6 +193,7 @@ const foodData = [
       name: 'ХУМУС  ',
       prise: '220',
       weight: '150г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/4a2/4a2fcee4f30bd0c548c489384c3b2152.jpg',
       ingredients: {нут: true, соус: true, сметана: true, томат: true},
@@ -189,6 +203,7 @@ const foodData = [
       name: 'БОРЩ',
       prise: '240',
       weight: '250г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/resize_cache/iblock/6db/1000_1000_0/6db539b51c19ae13921090e7040b8b81.jpg',
       ingredients: {
@@ -204,6 +219,7 @@ const foodData = [
       name: 'ПИТА',
       prise: '120',
       weight: '350г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/348/3489a9bb9244d76581e65a1c532908b5.jpg',
       ingredients: {паста: true, тмин: true, лук: true, томат: true},
@@ -213,6 +229,7 @@ const foodData = [
       name: 'СТРОГАНОВ',
       prise: '320',
       weight: '550г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/resize_cache/iblock/d8f/1000_1000_0/d8f563ec6d2bee8bc778342e3de883ff.jpg',
       ingredients: {паста: true, тмин: true, лук: true, томат: true},
@@ -222,6 +239,7 @@ const foodData = [
       name: 'АРБУЗ',
       prise: '100',
       weight: '180г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/d1f/d1f7955bb09302a3f521670c22b1e5f1.jpg',
       ingredients: {паста: true, тмин: true, лук: true, томат: true},
@@ -231,6 +249,7 @@ const foodData = [
       name: 'ФОРШМАК',
       prise: '120',
       weight: '450г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/49f/49fe462229296ccb3d5dff45cd30ef10.jpg',
       ingredients: {
@@ -248,6 +267,7 @@ const foodData = [
       name: 'Тартар',
       prise: '120',
       weight: '500г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6787/wide/AdobeStock_275611083_%D0%B8%D1%81%D0%BF%D1%80.jpg?1564142039',
       ingredients: {
@@ -263,6 +283,7 @@ const foodData = [
       name: 'Тунец',
       prise: '150',
       weight: '400г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6788/wide/AdobeStock_166014726_result.jpeg?1564134468',
       ingredients: {кунжут: true, белок: true, соль: true, масло: true},
@@ -272,6 +293,7 @@ const foodData = [
       name: 'Мидии',
       prise: '90',
       weight: '450г',
+      calories: "1000 ккал",
       image:
         'https://www.edimdoma.ru/system/images/contents/0000/6789/wide/AdobeStock_196463507_result.jpeg?1564134469',
       ingredients: {
@@ -287,6 +309,7 @@ const foodData = [
       name: 'Стейк из лосося',
       prise: '270',
       weight: '150г',
+      calories: "1000 ккал",
       image:
         'https://dellos-delivery.ru/upload/iblock/7d7/7d714d455bce1370400c3ba18cbab127.jpg',
       ingredients: {спаржа: true, маринад: true, специи: true},

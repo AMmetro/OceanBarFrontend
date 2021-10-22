@@ -1,10 +1,11 @@
 // import {ingridientsReducer} from "./ingridientsReducer";
 import {cartReducer} from "./cartReducer";
+import {dishesReducer} from "./dishesReducer";
 import {combineReducers, createStore} from "redux"
 
 
 const reducers = combineReducers({
-    // ingridients: ingridientsReducer,
+    dishes: dishesReducer,
     cart: cartReducer
 });
 

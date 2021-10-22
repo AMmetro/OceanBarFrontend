@@ -16,8 +16,6 @@ const Cart = () => {
 
   const orderedDish=useSelector<AppStoreType>(state=>state.cart)
   
-  console.log(orderedDish) 
-
   // @ts-ignore
    const orderedId=orderedDish[0].id
   // @ts-ignore 
@@ -36,7 +34,7 @@ const Cart = () => {
   return (
     <h1>
       <br/>
-       Временная корзина:
+       Корзина:
        <br/>
        <br/>
        <div>Ваш заказ Id = {orderedId}</div>
