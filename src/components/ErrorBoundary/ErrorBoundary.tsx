@@ -24,8 +24,7 @@ export default class ErrorBoundary extends Component<any, IState> {
       return (
         <div className='App'>
           <NavBarComponent/>        
-          {/* <p className={'errorBound'}>Ой! Произошла ошибка :(</p> */}
-          <img src={'https://s3.tproger.ru/uploads/2015/04/pic01.png'}/>
+          <p className={'errorBound'} style={{marginTop:"100px"}}>Ой! Произошла ошибка :(</p>
         </div>
       )
     } else {

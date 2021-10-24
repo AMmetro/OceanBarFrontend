@@ -1,30 +1,21 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable require-jsdoc */
-
-import {useSelector} from 'react-redux'
-import {AppStoreType} from "../../../../bll/store";
-
-const DessertList2 = () => {
-
-  const foodData=useSelector<AppStoreType>(state=>state.dishes)
-  //@ts-ignore
-  const desertDishes = foodData.filter(dish => dish)
-
-  console.log(desertDishes);
-  
+import foodData from '../DB/foodData'
+import {Row} from 'react-bootstrap'
+import ListItem from './ListItem'
 
 
+function DessertList(): JSX.Element {
   return (
-    <h1>
-      
-    </h1>
+    <>
+      <Row >
+        <ListItem data={foodData[4]} />
+      </Row>
+    </>
   )
-
-
 }
 
-export default DessertList2
-
+export default DessertList
 
 
 

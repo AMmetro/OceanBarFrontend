@@ -10,24 +10,29 @@ function ShiftingDish(props: any) {
 
   const [ingredients, setIngredients] = useState<Object>(props.currentDish?.ingredients);
 
-  const ingredientKey = Object.keys(ingredients)
-  const ingredientValue: IngridientValueType = Object.values(ingredients)
+            let disableIngredientAccept = false
+            let minAmountIngredient = 1
 
-  let minAcceptableAmountSatisfied = false
-  const minAcceptableAmount = 2
+    
+                //@ts-ignore
+                const newIngred = ingredients.filter( el => { 
+                  return el.isAdded == true
+                })
+    
+          //@ts-ignore
+            if (newIngred.length > minAmountIngredient) {
+              disableIngredientAccept = false }
+            else  { disableIngredientAccept = true }
+  
 
-  if (ingredientKey.filter((el, i) => {
-       return (ingredientValue[i])
-     }).length < minAcceptableAmount) { minAcceptableAmountSatisfied = true }
 
-  const updateIngridient = (newIngredients: any) => {
-    setIngredients(newIngredients)
-  }
-
+            const updateIngridient = (updIngredients: any) => {
+               setIngredients(updIngredients)
+            }
 
   const finishSifting = () => {
     props.dishisChanged()
-    props.updateIngredients(ingredients)
+            props.updateIngredients2(ingredients)
   }
 
   return (
@@ -56,12 +61,11 @@ function ShiftingDish(props: any) {
                 </Row>
                 <Row>
                   <Col xs={7}>
-                    <DishIngridients
-                      isShifting={true}
-                      setIngridient={updateIngridient}
-                      // ingredients={props.currentDish?.ingredients}
-                      ingredients={ingredients}
-                    />
+
+                      <DishIngridients
+                             setIngredient={updateIngridient}              
+                             ingredients={ingredients}
+                      />
                   </Col>
                   <Col xs={5}>
                     <br />
@@ -69,7 +73,7 @@ function ShiftingDish(props: any) {
                       onClick={finishSifting}
                       variant='outline-secondary'
                       size='sm'
-                      disabled={minAcceptableAmountSatisfied}
+                      disabled={disableIngredientAccept}
                     >
                       готово
                     </Button>

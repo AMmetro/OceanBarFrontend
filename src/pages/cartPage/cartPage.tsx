@@ -16,32 +16,13 @@ const Cart = () => {
 
   const orderedDish=useSelector<AppStoreType>(state=>state.cart)
   
-  // @ts-ignore
-   const orderedId=orderedDish[0].id
-  // @ts-ignore 
-  const ingridientKey = Object.keys(orderedDish[1])
-  // @ts-ignore 
-  const ingridientValue: IngridientValueType = Object.values(orderedDish[1])
-
- //@ts-ignore
-  const orderedIngridients=ingridientKey.map((el,i) => {
-    if (ingridientValue[i]){
-    return (
-      <div>{el}</div>
-      ) }
-  })
-
+  console.log(orderedDish);
+  
   return (
     <h1>
       <br/>
        Корзина:
-       <br/>
-       <br/>
-       <div>Ваш заказ Id = {orderedId}</div>
-       <br/>
-       <div>заказаны ингридиенты:</div>
-       {orderedIngridients}
-    </h1>
+     </h1>
   )
 
 

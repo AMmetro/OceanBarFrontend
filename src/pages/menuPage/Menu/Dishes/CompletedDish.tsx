@@ -5,21 +5,30 @@ import {useDispatch, useSelector} from 'react-redux'
 import DishIngredients from './DishIngridients'
 import {updateIngridientsAC} from '../../../../bll/cartReducer'
 
-import {Form, Button, Modal, CloseButton} from 'react-bootstrap'
+import {Row, Col, Modal, CloseButton} from 'react-bootstrap'
 
 function CompletedDish(props: any) {
   const dispatch = useDispatch()
 
+            //@ts-ignore
+            const newIngred = props.currentDish.ingredients.map( el => { 
+              if (el.isAdded) return (
+                 <li><h5>{el.name}</h5></li>
+                    )
+            })
+
   const orderDish = () => {
     dispatch(
-      updateIngridientsAC([
-        {id: props.currentDish.id},
-        props.currentDish?.ingredients
-      ])
-    )
-  }
+      updateIngridientsAC(
+                                [
+                                  {user:"email"},
+                                  {dishId:`${props.currentDish.id}`},
+                                  {ingredients:[`${props.currentDish?.ingredients}`]} 
+                               ]
+                         ))  }
 
-  const handleClose = () => {
+
+   const handleClose = () => {
     window.history.go(-1)
   }
 
@@ -28,58 +37,61 @@ function CompletedDish(props: any) {
       <div className={'title-dish'}>
         <h1>{props.currentDish.name}</h1>
       </div>
-      <div className={'image-dish'}>
-        {/* <i className='arrow bi bi-arrow-left-circle'></i> */}
-        <img className={'image'} src={props.currentDish.image} alt='food' />
-        {/* <i className='arrow bi bi-arrow-right-circle'></i> */}
-        <div className={'ingredients'}>
-          <span>
-            <Modal.Header className='border-0'>
-              <CloseButton onClick={() => handleClose()} />
-            </Modal.Header>
-          </span>
-          <div className={'changing'}>
-            <span className={'composition'}>Состав</span>
-            <span
-              className={'change-ingr'}
+      <Row>
+        <Col md={8} lg={8}>
+          <img
+            className={'image'}
+            style={{width: '100%', height:'auto'}}
+            src={props.currentDish.image}
+            alt='food'
+          />
+        </Col>
+        <Col md={4} lg={4}>
+          <div className={'ingredients'}>
+            <span>
+              <Modal.Header className='border-0'>
+                <CloseButton onClick={() => handleClose()} />
+              </Modal.Header>
+            </span>
+            <div className={'changing'}>
+              <span className={'composition'}>Состав</span>
+              <span
+                className={'change-ingr'}
+                onClick={() => {
+                  props.dishisChanged()
+                }}
+              >
+                Изменить
+              </span>
+            </div>
+
+             <ul>
+               {newIngred}
+            </ul>
+
+            <br />
+            <span>
+              <h5>Вес: {props.currentDish?.weight}</h5>
+            </span>
+            <span>
+              <h5>Калории: {props.currentDish?.calories}</h5>
+            </span>
+            <div className='line'></div>
+            <br />
+            <span>
+              <h5>Стоимость: {props.currentDish?.prise}BYN</h5>
+            </span>
+            <button
+              className={'order-btn-dish'}
               onClick={() => {
-                props.dishisChanged()
+                orderDish()
               }}
             >
-              Изменить
-            </span>
+              Заказать
+            </button>
           </div>
-          <DishIngredients
-            ingredients={props.currentDish?.ingredients}
-            isShifting={false}
-          />
-
-          <br />
-          <span>
-            <h5>Вес: {props.currentDish?.weight}</h5>
-          </span>
-          <span>
-            <h5>Калории: {props.currentDish?.calories}</h5>
-          </span>
-          <div className='line'></div>
-          <br />
-          <span>
-            <h5>Стоимость: {props.currentDish?.prise}BYN</h5>
-          </span>
-          <button
-            className={'order-btn-dish'}
-            onClick={() => {
-              orderDish()
-            }}
-          >
-            Заказать
-          </button>
-        </div>
-      </div>
-      {/* <div className={'may-be-intresting'}>
-        <h2>Вас так же могут заинтересовать</h2>
-        <ListItem isIntresting={true} data={foodData[0]} />
-      </div> */}
+        </Col>
+      </Row>
     </div>
   )
 }
