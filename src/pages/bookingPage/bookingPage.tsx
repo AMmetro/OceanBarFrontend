@@ -1,13 +1,9 @@
 import React from 'react'
 
 const Booking = () => {
-
-  const mistakeExample=[{}]
-  
   return (
     <div>
       <h1 className='m-3'>ЗАБРОНИРОВАТЬ СТОЛ</h1>
-      {mistakeExample}
     </div>
   )
 }

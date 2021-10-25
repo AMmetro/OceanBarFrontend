@@ -1,8 +1,5 @@
-import React from 'react'
-import foodData from '../DB/foodData'
 import './ComletedDish.scss'
-import {useDispatch, useSelector} from 'react-redux'
-import DishIngredients from './DishIngridients'
+import {useDispatch} from 'react-redux'
 import {updateIngridientsAC} from '../../../../bll/cartReducer'
 
 import {Row, Col, Modal, CloseButton} from 'react-bootstrap'
@@ -13,7 +10,7 @@ function CompletedDish(props: any) {
             //@ts-ignore
             const newIngred = props.currentDish.ingredients.map( el => { 
               if (el.isAdded) return (
-                 <li><h5>{el.name}</h5></li>
+                 <li><p>{el.name}</p></li>
                     )
             })
 
@@ -76,7 +73,7 @@ function CompletedDish(props: any) {
             <span>
               <h5>Калории: {props.currentDish?.calories}</h5>
             </span>
-            <div className='line'></div>
+            <div className='line-dish'></div>
             <br />
             <span>
               <h5>Стоимость: {props.currentDish?.prise}BYN</h5>

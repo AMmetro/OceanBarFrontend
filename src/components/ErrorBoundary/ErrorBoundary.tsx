@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import './ErrorBoundary.scss'
-import NavBarComponent from '../../components/homePageComponents/Navbar/navBarComp'
 interface IState {
   hasError: boolean
 }
@@ -23,8 +22,7 @@ export default class ErrorBoundary extends Component<any, IState> {
     if (this.state.hasError) {
       return (
         <div className='App'>
-          <NavBarComponent/>        
-          <p className={'errorBound'} style={{marginTop:"100px"}}>Ой! Произошла ошибка :(</p>
+          <p className={'errorBound'}>Ой! Произошла ошибка :(</p>
         </div>
       )
     } else {

@@ -8,7 +8,7 @@ import ListItem from './ListItem'
 
 const DessertList2 = () => {
 
-  const foodData=useSelector<AppStoreType>(state=>state.dishes)
+  // const foodData=useSelector<AppStoreType>(state=>state.dishes)
   
   
   // --------select specific category of dishes--------- 
