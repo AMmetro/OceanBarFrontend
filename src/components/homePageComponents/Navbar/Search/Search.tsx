@@ -1,69 +1,93 @@
-// tslint:disable
+/* eslint-disable react/jsx-no-comment-textnodes */
 import axios, {AxiosResponse} from 'axios'
 import React, {useEffect, useState} from 'react'
+import {useHistory} from 'react-router-dom'
+import {url} from '../../../../api'
 import {Form, Button, FormControl} from 'react-bootstrap'
 import './search.scss'
 
+type Dish = {
+  id: string,
+  name: string,
+  price: number,
+  weight: string
+  calories: string
+  imageURL: string
+  ingredients: string,
+  dishCategory: string
+}
+
 /* tslint:disable */
-const SearchField: React.FC = () => {
+const SearchField = () => {
+  const history = useHistory()
 
-  // const [dishes, setMenu] = useState([])
+  const [dishes, setMenu] = useState<Dish[]>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
-  // useEffect(() => {
-  //   const getMenu = async () => {
-  //     const response = await axios.get(' http://localhost:3001/api/menu/')
-  //     console.log(response.data.dishes.name)
-  //     setMenu(response.data[dishes].name)
-  //   }
+  useEffect(() => {
+    const getMenu = async () => {
+      const response: AxiosResponse = await axios.get(`${url}/menu/`)
+      // @ts-ignore
+      setMenu(response.data.data.dishes)
+    }
+    getMenu()
+  }, [])
 
-  //   getMenu()
-  // }, [])
 
-  // const [value, setValue] = useState('')
+  useEffect(() => {
+    if (searchTerm) {
+      setIsOpen(true)
 
-  // const filteredDishes = dishes.filter((dish) => {
-  //   return dish.toLowerCase().includes(value.toLowerCase())
-  // })
+      const filteredDishes = dishes.filter((dish: Dish) => {
+        // eslint-disable-next-line max-len
+        return dish.name.toLowerCase().includes(searchTerm.toLowerCase())
+      })
 
-  // const [isOpen, setIsOpen] = useState(true)
+      setMenu(filteredDishes)
+    } else {
+      setIsOpen(false)
+    }
+  }, [searchTerm])
 
-  // const itemClickHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setValue(e.target.value)
-  //   setIsOpen(!isOpen)
-  // }
 
-  // const inputClickHandler = () => {
-  //   setIsOpen(true)
-  // }
+  const itemClickHandler = (id: string) => {
+    const newDish = dishes.find((dish: Dish) => dish.id === id)
+    setSearchTerm('')
+    setIsOpen(!isOpen)
+    history.push(`/menu/dishes/id `)
+    // eslint-disable-next-line max-len
+    // history.push(`/${newDish.name}`)  // оставить, пока не будет работающего пути к блюду
+  }
 
   return (
     <>
       <Form className='d-flex mx-6 d-flex-pos '>
         <FormControl
-          // {...dishes}
           type='text'
           placeholder='Search...'
           className='form-control-pad nav-input '
           aria-label='Search'
-          // value={value}
-          // onChange={(event) => setValue(event.target.value)}
-          // onClick={inputClickHandler}
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value)
+          }}
         />
-        {/* <ul className='autocomplete'>
-          {
-            value && isOpen ? filteredDishes.map((dish: string, index) => {
-              return (
-                <li
-                  key={index}
-                  dish={dish}
-                  className='autocomplete-item'
-                  onClick={() => itemClickHandler}>
-                  {dish.names}
-                </li>
-              )
-            }) : null
-          }
-        </ul> */}
+
+        {isOpen && (
+          <ul className='autocomplete'>
+            {dishes.map((val: Dish, index: number) => {
+              return <li
+                key={index}
+                className='autocomplete__item'
+                onClick={() => itemClickHandler(val.id)}
+              >
+                {val.name}
+              </li>
+            })}
+          </ul>
+        )}
+
         <Button variant='link'
           className=' btn-input'>
           <i className='fas fa-search icon-height search-icon'></i>
@@ -74,4 +98,5 @@ const SearchField: React.FC = () => {
 }
 
 export default SearchField
+
 

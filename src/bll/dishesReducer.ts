@@ -90,7 +90,9 @@ export const dishesReducer = (state = initialState, action: actionType): dishTyp
         case "addDishes": {
         
             //@ts-ignore
-            return [action.dishesData]
+            // console.log(action.dishesData);
+            //@ts-ignore
+            return {...state}
         }
 
 
@@ -114,7 +116,7 @@ export const getDishesFromApiTC = () => {
             .then((res) => {
                 // @ts-ignore
                 // console.log(res.data.data.dishes);
-              dispatch(addDishesAC(res.data.data.dishes))
+            //   dispatch(addDishesAC(res.data.data.dishes))
             })
             .catch((rej) => {
                 console.log(rej)

@@ -13,11 +13,12 @@
 }
 
 .image-dish {
-   margin-top: 10px;
+  // display: flex; !!!!!!
+  margin-top: 10px;
   height: 500px;
   width: 800px;
   margin-left: -30px;
- 
+  // flex-wrap: wrap;
 }
 
 // .image {
@@ -75,7 +76,7 @@ i:hover {
   text-align: left;
 }
 
- .line-dish {
+  .line-dish {
   margin-top: 70px; 
   border-bottom: 1px solid gray; 
  }

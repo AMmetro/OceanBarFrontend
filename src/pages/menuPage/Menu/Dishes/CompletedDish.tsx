@@ -1,10 +1,15 @@
 import './ComletedDish.scss'
 import {useDispatch} from 'react-redux'
 import {updateIngridientsAC} from '../../../../bll/cartReducer'
-
 import {Row, Col, Modal, CloseButton} from 'react-bootstrap'
+import {DishType} from '../../../../redux/reducers/dishesReducer' 
 
-function CompletedDish(props: any) {
+type PropsType = {
+  changeStatus?: () => void
+  currentDish: DishType
+}
+
+function CompletedDish(props: PropsType) {
   const dispatch = useDispatch()
 
             //@ts-ignore
@@ -39,7 +44,8 @@ function CompletedDish(props: any) {
           <img
             className={'image'}
             style={{width: '100%', height:'auto'}}
-            src={props.currentDish.image}
+            // src={props.currentDish.image}
+            src={"https://img.poehalisnami.by/static/countries/c84/small/84_637145235972434334.jpg"} 
             alt='food'
           />
         </Col>
@@ -55,7 +61,7 @@ function CompletedDish(props: any) {
               <span
                 className={'change-ingr'}
                 onClick={() => {
-                  props.dishisChanged()
+                  props.changeStatus()
                 }}
               >
                 Изменить
@@ -76,7 +82,7 @@ function CompletedDish(props: any) {
             <div className='line-dish'></div>
             <br />
             <span>
-              <h5>Стоимость: {props.currentDish?.prise}BYN</h5>
+              <h5>Стоимость: {props.currentDish?.price}BYN</h5>
             </span>
             <button
               className={'order-btn-dish'}

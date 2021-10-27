@@ -3,13 +3,10 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import React from 'react'
 
 function ListItem(props: any) {
-  const token = useParams<{ token: string }>()
-
-
+  // const token = useParams<{ token: string }>()
 
   // @ts-ignore
   const arrayDishes = props.data.map((dish) => {
-
     return (
       <Col>
         <Card      
@@ -22,7 +19,8 @@ function ListItem(props: any) {
           <NavLink to={'/dish/' + dish.id}>
             <Card.Img
               variant='top'
-              src={dish.image}
+              // src={dish.image}
+              src={"https://img.poehalisnami.by/static/countries/c84/small/84_637145235972434334.jpg"}
               id={dish.id}
               onClick={() => console.log('открыть' + `${dish.id}`)}
             />
@@ -33,13 +31,7 @@ function ListItem(props: any) {
               <Col md="auto"><Card.Title>{dish.name}</Card.Title></Col>
               <Col sm={9}></Col>
             </Row>
-
-            {/* <Row>
-              {Object.keys(dish.ingredients).map(el =>` ${el} `)}
-            </Row> */}
-
             <br />
-
             <Row>
               <Col xs={5} sm={5} md={5} lg={5}>
                 <div style={{ display: "flex" }}>

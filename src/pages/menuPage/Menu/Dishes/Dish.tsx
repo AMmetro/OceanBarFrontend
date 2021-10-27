@@ -2,52 +2,35 @@ import { useState } from "react"
 import ShiftingDish from './ShiftingDish'
 import CompletedDish from './CompletedDish'
 import { useParams } from 'react-router-dom'
-import foodData from '../DB/foodData'
-import { useSelector } from 'react-redux'
-// import { AppStoreType } from "../../../../bll/store";
+import { useAppSelector } from '../../../../redux/hooks'
 import MaybeIntresting from '../../../../components/maybeIntresting/maybeIntresting'
+import {IngredientType} from '../../../../redux/reducers/dishesReducer'
+import {IngredientsType} from '../../../../redux/reducers/dishesReducer'
+import {DishType} from '../../../../redux/reducers/dishesReducer'
 
-import {AppStoreType} from "../../../../bll/store";
+// type ingrType = {name:string, isAdded:boolean}
+// type updIngridientsType = Array<ingrType>
+
 
 
 function Dish() {
 
   const token = useParams<{ token: string }>()
+  const allDishes = useAppSelector<any>(state => state.dish)
+  
 
-  // @ts-ignore
-  const currentDish = foodData[3].find((el) => el.id == token.token)
+const currentDish = allDishes.find((el) => el.id == token.token)
 
-// -------------new structur ingridients-----------------------------------
-// const allDishes=useSelector<AppStoreType>(state=>state.dishes)
 
-//@ts-ignore
-// const currentDish = allDishes.find((el) => el.id == token.token)
-
-console.log(currentDish);
-
-//@ts-ignore
-const [ingredients, setIngredients] = useState<Object>(currentDish.ingredients);
-
+const [ingredients, setIngredients] = useState<IngredientsType>(currentDish.ingredients);
 
 const updatedDish = { ...currentDish, ingredients }
 
-const updateIngredients = (updIngridients: any) => {
+const updateIngredients = (updIngridients: IngredientsType) => {
   setIngredients(updIngridients)
 }
-  
-// -----------------------------------------------------------------------
 
-  
-  
-  // const [ingredients, setIngredients] = useState<Object>(currentDish.ingredients);
   const [dishСhangeStatus, setDishСhangeStatus] = useState<boolean>(false);
-
-  // @ts-ignore
-  // const updatedDish = { ...currentDish, ingredients }
-     
-  // const updateIngredients = (updIngridients: any) => {
-  //   setIngredients(updIngridients)
-  // }
 
   const changeStatus = () => {
     setDishСhangeStatus(!dishСhangeStatus)
@@ -59,21 +42,14 @@ const updateIngredients = (updIngridients: any) => {
       {dishСhangeStatus
          ? 
         <ShiftingDish
-          dishisChanged={changeStatus}
-          // currentDish={updatedDish}
-          updateIngredients={updateIngredients}
-        //   // --------------new structur ingridients-----------------------------
+        changeStatus={changeStatus}
+          // updateIngredients={updateIngredients}
           currentDish ={updatedDish} 
-        //   // updateIngredients2={updateIngredients2}
-        //   // --------------new structur ingridients-----------------------------
-        />
+         />
         :
         <CompletedDish
-          dishisChanged={changeStatus}
+        changeStatus={changeStatus}
           currentDish={updatedDish}
-           // --------------new structur ingridients-----------------------------
-          //  currentDish2 ={updatedDish2} 
-           // --------------new structur ingridients-----------------------------
           />
         }
 
