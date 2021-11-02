@@ -5,7 +5,7 @@ import { RootState } from '../store'
 import { ThunkAction } from 'redux-thunk'
 import { API } from '../../dal/Api'
 
-export type IngredientType = {name: string; isAdded: boolean}
+export type IngredientType = { name: string; isAdded: boolean }
 export type IngredientsType = Array<IngredientType>
 export type DishType = {
   'id': number,
@@ -17,8 +17,7 @@ export type DishType = {
   'ingredients': IngredientsType,
   'dishCategory': string
 }
-export type dishesType=Array<DishType>
-
+export type dishesType = Array<DishType>
 const initialState: dishesType = [
   {
     "id": 1,
@@ -26,8 +25,8 @@ const initialState: dishesType = [
     "price": 50,
     "weight": "1000 гр",
     "calories": "1000 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/b64f8031-90c1-4ad9-a9a5-470ad4f1d2d6#media-blob-url=true&id=4adee541-05f9-45a2-b69d-d2478116dd1d&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fpng&name=TM3vUYf2l5GfdF2cKJJ-ypShdJu3jwn9wMFPcBo2sJfZCspJ7I9YU07zHwkEebL4cTrbkW6Hlf7bGHkns3Pf-dPFGO-YH3eoxHaHBb5-kADeSoy9FD4CdkMQ0WlWt45VwbRdWP0%3Ds0&size=1368186&width=778&height=1384&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%97%D0%B0%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5+%D1%83%D1%81%D1%82%D1%80%D0%B8%D1%86%D1%8B/%D0%97%D0%B0%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B0%D1%8F%D0%A3%D1%81%D1%82%D1%80%D0%B8%D1%86%D0%B0%D0%A1%D0%91%D0%B5%D0%BB%D1%8B%D0%BC%D0%B8%D0%93%D1%80%D0%B8%D0%B1%D0%B0%D0%BC%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Плато"
   },
   {
@@ -36,8 +35,8 @@ const initialState: dishesType = [
     "price": 60,
     "weight": "1500 гр",
     "calories": "1000 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/c1a85865-1649-4060-8b96-0bf37de1e148#media-blob-url=true&id=0495b1d7-1ad9-4afd-bd1d-a2660547451b&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fjpeg&name=Yt0cWs5SLWCMe_178U6hlpG0JmjaInbZVWLtAzlPT2yjpNNWlHfj3FSFKx-cCe2TXDKPUCffy8anNfs9KXDQ_sI8a3kvG7DkaUMmYxyJwjqw0rZCygA0199zT66F3gUNCqxuk4c%3Ds0&size=126176&width=750&height=938&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%A3%D1%81%D1%82%D1%80%D0%B8%D1%86.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Плато"
   },
   {
@@ -46,8 +45,8 @@ const initialState: dishesType = [
     "price": 70,
     "weight": "1000 гр",
     "calories": "900 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/69a2b7b5-cd08-48ea-b074-bc336254d3c4#media-blob-url=true&id=cdfdcab2-ffdc-4792-af2f-17d4f3291c85&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fjpeg&name=C_QF38PYwa19SGfrP1BfwAgDhOATWNLtnDq96lN5MAHd7uKevnpq8GacJncbWEN1Kl9ghkXK8DvDqhylTQ2YO0SOI8rAsOCkAu_jty7jNhRfZlCKQXI0vyM1zRnVbw%3Ds0&size=203896&width=882&height=1080&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Плато"
   },
   {
@@ -56,8 +55,8 @@ const initialState: dishesType = [
     "price": 20,
     "weight": "600 гр",
     "calories": "300 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/db1444f8-46c5-4f74-8dcb-f284e99c6d2a#media-blob-url=true&id=f90ae2c3-320c-4344-a0bd-831b296fbfcb&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fjpeg&name=Erd5lac15pcLuMZIoPWeO62-da9EXqNk-toryrADdOLTEer2Zx4a-kfVGWmyusvSfzA3-W3W7nAnDFR-6aoTBBxryQYVsYRh6P4aFhN4WBprDD1NdLeLev_FiI8mww%3Ds0&size=166330&width=936&height=1080&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B5%D0%B5%D0%9F%D0%BB%D0%B0%D1%82%D0%BE.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Супы"
   },
   {
@@ -66,45 +65,114 @@ const initialState: dishesType = [
     "price": 30,
     "weight": "500 гр",
     "calories": "250 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/a8a60e66-c04d-4312-aae1-d1486d258cd3#media-blob-url=true&id=a87134f2-f75f-4a2d-8073-bd19bdb0918f&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fjpeg&name=ERCasMNJlRycwHj5XHi3RFF3y_SR825RS4tUv7cxo1qDZHjpl7RhGufpr15Eq5H6SYqv2d7lH56J_n6nOR62scJDVd4cEoP8waJKH5tqz9WyCev_ZnZnOKa0VytZFg%3Ds0&size=56879&width=510&height=510&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Супы"
   },
   {
     "id": 6,
-    "name": "ТАЙСКИЙ САЛАТ С ТИГРОВЫМИ КРЕВЕТКАМИ И БЕЙБИ-КАЛЬМАРАМИ",
+    "name": "ТАЙСКИЙ САЛАТ С КРЕВЕТКАМИ",
     "price": 35,
     "weight": "450 гр",
     "calories": "400 ккал",
-    "imageURL": "blob:https://itechart-vs.atlassian.net/5ccd8ae5-2273-4f13-ae36-e079565015a0#media-blob-url=true&id=e00a0f9c-65d8-4ea6-a99b-7348bb29269e&collection=contentId-2818049&contextId=2818049&mimeType=image%2Fjpeg&name=qzMGPT0i8rX1nCa1XepZCoPx5CIcnZ9jvDhD38os6tUAD4YqsH_W6gWLN-lYIz4BicTiG1fQkM8Q9U_MLKc5MRJDwfvcZzXw1DE0ZJVDSmJ1UmGP38ETzA16tuDw3Q%3Ds0&size=137047&width=862&height=1080&alt=",
-    "ingredients": [{ name: "соус", isAdded: true }, { name: "сметана", isAdded: true }, { name: "лук", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
     "dishCategory": "Салаты"
-  }
+  },
+  {
+    "id": 7,
+    "name": "САЛАТ С КОПЧЕНЫМ ЛОСОСЕМ",
+    "price": 25,
+    "weight": "500 гр",
+    "calories": "300 ккал",
+    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "dishCategory": "Салаты"
+  },
+  {
+    "id": 8,
+    "name": "САЛАТ С МОРСКИМ ГРЕБЕШКОМ",
+    "price": 40,
+    "weight": "450 гр",
+    "calories": "350 ккал",
+     "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+    "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+    "dishCategory": "Салаты"
+  },
+  // {
+  //   "id": 9,
+  //   "name": "ЗАПЕЧЕНАЯ УСТРИЦА КИЛПАТРИК",
+  //   "price": 50,
+  //   "weight": "300 гр",
+  //   "calories": "270 ккал",
+  //    "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+  //   "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+  //   "dishCategory": "Запеченные устрицы"
+  // },
+  // {
+  //   "id": 10,
+  //   "name": "ЗАПЕЧЕНАЯ УСТРИЦА С БЕЛЫМИ ГРИБАМИ",
+  //   "price": 35,
+  //   "weight": "200 гр",
+  //   "calories": "400 ккал",
+  //   "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+  //   "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+  //   "dishCategory": "Запеченные устрицы"
+  // },
+  // {
+  //   "id": 11,
+  //   "name": "ЗАПЕЧЕНАЯ УСТРИЦА С ТРЮФЕЛЬНЫМ МАСЛОМ",
+  //   "price": 35,
+  //   "weight": "400 гр",
+  //   "calories": "520 ккал",
+  //   "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+  //   "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+  //   "dishCategory": "Запеченные устрицы"
+  // },
+  // {
+  //   "id": 12,
+  //   "name": "ЧИЗКЕЙК С КЛУБНИЧНЫМ СОУСОМ",
+  //   "price": 15,
+  //   "weight": "200 гр",
+  //   "calories": "250 ккал",
+  //   "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+  //   "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+  //   "dishCategory": "Десерты"
+  // },
+  // {
+  //   "id": 13,
+  //   "name": "ЛИМОННЫЙ ТАРТ",
+  //   "price": 12,
+  //   "weight": "105 гр",
+  //   "calories": "295 ккал",
+  //   "imageURL": "https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg",
+  //   "ingredients": [{ name: "морской гребешок с трюфельным маслом", isAdded: true }, { name: "осьминог с глазировкой из черного перца", isAdded: true }, { name: "королевские креветки в панцире", isAdded: true }, { name: "чеснок", isAdded: true }],
+  //   "dishCategory": "Десерты"
+  // }
 ]
-
 const dishesReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(addDishesAC, (state, action) => {
-     return action.payload
+      return action.payload
     })
 })
-
 export default dishesReducer
-
-
 export const getDishesFromApiTC =
   (): ThunkAction<void, RootState, unknown, AnyAction> =>
     async dispatch => {
-      const asyncResp = await API.getAllDish()
-
-      // @ts-ignore       
-      const restructDishes = asyncResp.data.data.dishes.map(dish => {
-        let myObj: any = []
-        dish.ingredients.split(';').forEach(ingr => {
-          myObj.push({ name: ingr, isAdded: true })
+      try {
+        const asyncResp = await API.getAllDish()
+        console.log(asyncResp);
+      
+        // @ts-ignore       
+        const restructDishes = asyncResp.data.data.dishes.map(dish => {
+          let myObj: Array<IngredientType> = []
+          dish.ingredients.split(';').forEach(ingr => {
+            myObj.push({name: ingr, isAdded: true})
+          })
+          return ({...dish, ingredients: myObj })
         })
-        return ({ ...dish, ingredients: myObj })
-      })
-
-      dispatch(addDishesAC(restructDishes))
+        dispatch(addDishesAC(restructDishes))
+      }
+      catch (err) {console.log(err)}
     }
