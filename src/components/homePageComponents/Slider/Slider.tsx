@@ -1,28 +1,28 @@
-import React from 'react'
-import {Row, Col } from 'react-bootstrap'
-import SliderGallery from './SliderGallery'
 
+import {Row, Col} from 'react-bootstrap'
+import SliderGallery from './SliderGallery'
+import {AppStoreType} from '../../../redux/reducers/rootReducer'
+import {useSelector} from 'react-redux'
+import {DishType} from 'src/common/types/dishesType'
 
 const Slider = () => {
+  const allDishes =
+   useSelector<AppStoreType, Array<DishType>>((state) => state.dish)
+
   return (
     <>
-        {/* <div 
-         style={{width: '65%', borderColor: '#ff9e05',
-         borderStyle: "solid", padding: "1px 5px 20px 25px",
-         margin:"50px auto" }}
-         > */}
-          <br/><br/>
-          <Row  >
-            <Col> <h2> Предложение недели </h2> </Col>
-          </Row>
-          <Row className="justify-content-md-center">
-            <Col xs lg="1"></Col>
-              <Col>
-                <SliderGallery/>
-              </Col>
-            <Col xs lg="1"></Col>
-          </Row> 
-          <br/><br/><br/><br/>      
+      <br/><br/>
+      <Row >
+        <Col> <h2> Предложение недели </h2> </Col>
+      </Row>
+      <Row className='justify-content-md-center'>
+        <Col xs lg='1'></Col>
+        <Col>
+          { allDishes.length > 10 ? <SliderGallery/> : null }
+        </Col>
+        <Col xs lg='1'></Col>
+      </Row>
+      <br/><br/><br/><br/>
     </>
 
   )

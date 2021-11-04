@@ -1,24 +1,23 @@
 import {Row} from 'react-bootstrap'
+
 import ListItem from './ListItem'
-import { useAppSelector } from '../../../../redux/hooks'
+import {useAppSelector} from '../../../../redux/hooks'
+import {DishType} from '../../../../common/types/dishesType'
 
-
-function SoupList() {
-
-  const allDishes = useAppSelector<any>(state => state.dish)
-  const soupDishes = allDishes.filter(dish => {
-    return dish.dishCategory=="Супы"
+const SoupList = () => {
+  const allDishes: DishType = useAppSelector<any>((state) => state.dish)
+  // @ts-ignores
+  const soupDishes = allDishes.filter((dish) => {
+    return dish.dishCategory == 'Супы'
   })
 
   return (
     <>
-        <Row >
-              <ListItem data={soupDishes} />
-         </Row>
+      <Row>
+        <ListItem data={soupDishes} isIntresting={false} />
+      </Row>
     </>
-  );
+  )
 }
 
-export default SoupList;
-
-
+export default SoupList

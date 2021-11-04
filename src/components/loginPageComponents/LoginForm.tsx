@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import axios from 'axios'
@@ -8,8 +8,18 @@ import {Form, Button, Modal, CloseButton} from 'react-bootstrap'
 import {url} from '../../api'
 import {useValidation} from '../../utils/validation'
 import {logIn} from '../../redux/actions'
+import {ValidationType} from '../../common/types/userTypes'
+
 
 import './LoginForm.scss'
+
+// interface FormEventTarget extends EventTarget {
+//   value: string
+// }
+
+// interface FormChangeEvent extends React.ChangeEvent<HTMLElement> {
+//   target: FormEventTarget
+// }
 
 const LogInForm = () => {
   const history = useHistory()
@@ -17,7 +27,7 @@ const LogInForm = () => {
 
   const [authFailed, setAuthFailed] = useState(false)
 
-  const useInput = (initialValue: string, validations: any) => {
+  const useInput = (initialValue: string, validations: ValidationType) => {
     const [value, setValue] = useState(initialValue)
     const [isDirty, setDirty] = useState(false)
     const valid = useValidation(value, validations)

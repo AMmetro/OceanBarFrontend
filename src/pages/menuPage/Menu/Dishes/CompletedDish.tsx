@@ -1,25 +1,50 @@
+import {useDispatch, useSelector} from 'react-redux'
+import {Row, Col, Modal, CloseButton} from 'react-bootstrap'
+
+import {DishType} from '../../../../redux/reducers/dishesReducer'
+import {addDishToCart} from '../../../../redux/actions'
+import {orderedToast} from '../../../../components/OrderToast/OrderedToast'
+
 import './Dish.scss'
-import { useDispatch } from 'react-redux'
-import { Row, Col, Modal, CloseButton } from 'react-bootstrap'
-import { DishType } from '../../../../redux/reducers/dishesReducer'
+import {DishInCart} from '../../../../common/types/dishesType'
 
 type PropsType = {
-  changeStatus?: () => void
+  changeStatus: () => void
   currentDish: DishType
 }
 
-function CompletedDish(props: PropsType) {
+const CompletedDish = (props: PropsType) => {
+  const dishes = useSelector((state: any) => state.cart.dishes)
   const dispatch = useDispatch()
 
-  const ingredientList = props.currentDish.ingredients.map(el => {
-    if (el.isAdded) return (
-      <li style={{ lineHeight: "15px" }}><p>{el.name}</p></li>
-    )
+  const ingredientList = props.currentDish.ingredients.map((el, i) => {
+    if (el.isAdded) {
+      return (
+        <li
+          key={i.toString()}
+          style={{lineHeight: '15px'}}>
+          <p>{el.name}</p>
+        </li>
+      )
+    }
   })
 
-  const orderDish = () => {
+  const orderDish = (name: string) => {
+    if (dishes.find((dish: DishInCart) => dish.id === props.currentDish.id)) {
+      orderedToast(`Блюдо "${props.currentDish.name}" уже в корзине!`)
+    } else {
+      dispatch(
+        addDishToCart({
+          id: props.currentDish.id,
+          name: props.currentDish.name,
+          price: props.currentDish.price,
+          imageURL: props.currentDish.imageURL,
+          numberOfDishes: 1,
+        })
+      )
+      orderedToast(`Блюдо "${props.currentDish.name}" добавлено в корзину`)
+    }
   }
-
 
   const handleClose = () => {
     window.history.go(-1)
@@ -27,38 +52,22 @@ function CompletedDish(props: PropsType) {
 
   return (
     <>
-      {/* <div className={'main-dish'}> */}
       <div className={'title-dish'}>
         <h1>{props.currentDish.name}</h1>
       </div>
       <Row>
-        <Col md={8} lg={8}>
+        <Col xs={'auto'} sm={6} md={8} lg={8}>
           <div
-            key={props.currentDish.id}
             style={{
-                height: '100%', width: '100%',
-                backgroundImage: `url(${props.currentDish.imageURL})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              } }
+              height: '100%',
+              width: '100%',
+              backgroundImage: `url(${props.currentDish.imageURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           />
-          {/* <img
-            className={'image'}
-            style={
-              {         
-                  // height: '150px', width: '100%',
-                  // backgroundImage: `url(${props.currentDish.imageURL})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  //  width: '50%', height: 'auto'
-                }
-            }
-            src={props.currentDish.imageURL}
-            // src={"https://oceanbarmenu.s3.eu-north-1.amazonaws.com/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE/%D0%9F%D0%BB%D0%B0%D1%82%D0%BE%D0%9A%D1%80%D0%B0%D0%B1%D1%8B%D0%9C%D0%BE%D0%BB%D0%BB%D1%8E%D1%81%D0%BA%D0%B8.jpg"}
-            alt='dish image'
-          /> */}
         </Col>
-        <Col md={4} lg={4}>
+        <Col xs={'auto'} sm={6} md={4} lg={4}>
           <div className={'ingredients'}>
             <span>
               <Modal.Header className='border-0'>
@@ -77,9 +86,7 @@ function CompletedDish(props: PropsType) {
               </span>
             </div>
 
-            <ul>
-              {ingredientList}
-            </ul>
+            <ul>{ingredientList}</ul>
 
             <br />
             <span>
@@ -90,15 +97,19 @@ function CompletedDish(props: PropsType) {
             </span>
             <div className='line-dish'></div>
             <br />
-            <div style={{ display: "flex", alignItems: "baseline" }}>
-              <span style={{ fontSize: "15px" }}><h5>Стоимость:</h5></span>
-              <span style={{ fontSize: "20px", marginLeft: "3px" }}>{props.currentDish?.price}</span>
-              <span style={{ fontSize: "18px", marginLeft: "2px" }}>BYN</span>
+            <div style={{display: 'flex', alignItems: 'baseline'}}>
+              <span style={{fontSize: '15px'}}>
+                <h5>Стоимость:</h5>
+              </span>
+              <span style={{fontSize: '20px', marginLeft: '3px'}}>
+                {props.currentDish?.price}
+              </span>
+              <span style={{fontSize: '18px', marginLeft: '2px'}}>BYN</span>
             </div>
             <button
               className={'order-btn-dish'}
               onClick={() => {
-                orderDish()
+                orderDish(props.currentDish.name)
               }}
             >
               Заказать
@@ -106,7 +117,6 @@ function CompletedDish(props: PropsType) {
           </div>
         </Col>
       </Row>
-      {/* </div> */}
     </>
   )
 }
