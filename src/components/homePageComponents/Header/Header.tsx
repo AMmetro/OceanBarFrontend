@@ -1,28 +1,34 @@
-import React from 'react'
-import { Button, Nav } from 'react-bootstrap'
-import Image from 'react-bootstrap/Image'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
 
+import {Link} from 'react-router-dom'
+import {Nav} from 'react-bootstrap'
+
+import Logo from '../Logo/Logo'
+import './Header.scss'
 
 const OceanBarHeader = () => {
   return (
-    <div className='OceanBarHeader'>
-      <h1>
-        OceanBar
-        <Image
-          src='images/logo.png'
-          alt='logo'
-          className='mx-2'
-          width={70}
-          height={70}
-        />
-      </h1>
-      <h5>Вкусно. Быстро. Качественно</h5>
-      <Nav.Link as={Link} to={'/menu'}>
-        <Button className='menu-btn' variant='secondary'>
-          <span className='menu-text-main-page'>Меню</span>
-        </Button>
-      </Nav.Link>
+    <div
+      style={{
+        background:
+          'linear-gradient(to top, transparent, #252525), ' +
+          'url(/header.png)',
+        backgroundPosition: 'left',
+        padding: '100px',
+        color: '#252525'
+      }}
+      className='OceanBarHeader'
+    >
+      <Logo />
+      <h5 className={'tasty-quick-quality'}>Вкусно. Быстро. Качественно</h5>
+      <Nav className='justify-content-center'>
+        <Nav.Item>
+          <Nav.Link as={Link} to={'/menu'}>
+            <button className={'menu-btn'}>
+              <span className='menu-text-main-page'>Меню</span>
+            </button>
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
     </div>
   )
 }

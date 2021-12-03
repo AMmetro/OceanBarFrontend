@@ -1,0 +1,36 @@
+
+.HowItWorks {
+  text-align: center;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+.HowItWorks-text{
+  font-size: 35px;
+}
+
+
+.howItWorks-info {
+  color: #979797;
+  letter-spacing: 2px;
+  font-size: 15px;
+  word-spacing:3px ;
+  margin-top: 20px;
+}
+
+.steps {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  font-family: Regattia Stencil;
+}
+
+.step {
+  font-size: 70px;
+  color: #a09f9f;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.hint {
+  font-size: 17px;
+}
