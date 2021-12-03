@@ -1,54 +1,52 @@
-import {useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
+import Cookies from 'js-cookie'
+import {useAppDispatch} from '../../redux/hooks'
+import {logOut} from '../../redux/actions'
 import OrderHistory from '../../components/userProfile/orderHistory'
 import DeliveryAdress from '../../components/userProfile/deliveryAdress'
 import MyCreditCards from '../../components/userProfile/myCards'
 import PasswordReset from '../../components/userProfile/passwordReset'
 import PersonalData from '../../components/userProfile/personalData'
-import {getUserPersonalDataTC} from '../../redux/reducers/userReducer'
-import {getUserDeliveryDataTC} from '../../redux/reducers/deliveryReducer'
-// import {AppStoreType} from '../../redux/reducers/rootReducer'
-// import {DeliveryAdressType} from '../../common/types/userTypes'
-import {useDispatch} from 'react-redux'
-// import {useSelector} from 'react-redux'
 import './profile.scss'
 
-
 const UserProfile = () => {
-  const dispatch = useDispatch()
+  const history = useHistory()
+  const dispatch = useAppDispatch()
 
-  // const delivery =
-  // useSelector<AppStoreType, DeliveryAdressType>((state) => state.delivery)
 
-  useEffect(() => {
-    dispatch(getUserPersonalDataTC())
-    dispatch(getUserDeliveryDataTC())
-  }, [])
+  const handleClose = () => {
+    Cookies.remove('token')
+    Cookies.remove('refreshToken') //
+    // localStorage.removeItem('token')
+    dispatch(logOut())
+    history.push('/')
+  }
 
 
   return (
-    <div>
-      <div className='container'>
+    <>
+      <div className='container-md'>
         <div className='title-group'>
           <h1 className='profile-title'>
             Профиль
           </h1>
-          <div className='profile-line'></div>
-          <button className='btn-exit btn '>Выйти</button>
+          <div className='profile-line'/>
+          <button className='btn-exit btn' onClick={handleClose}>Выйти</button>
         </div>
 
         <div className='row justify-content-start'>
-          <div className='col-8'>
+          <div className='col-lg-6'>
             <PersonalData />
             <DeliveryAdress/>
             <PasswordReset/>
             <MyCreditCards/>
           </div>
-          <div className='col-4'>
+          <div className='col-lg-6 profile-block history ml-md-auto'>
             <OrderHistory/>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

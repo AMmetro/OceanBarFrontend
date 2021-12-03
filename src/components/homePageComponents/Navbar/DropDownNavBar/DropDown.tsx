@@ -1,8 +1,10 @@
-
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {NavDropdown} from 'react-bootstrap'
+import Cookies from 'js-cookie'
 
-import {logOut} from '../../../../redux/actions'
+import {ApiAuth} from '../../../../api/ApiAuth'
+
+import {logOut, removeUser} from '../../../../redux/actions'
 import {useAppSelector, useAppDispatch} from '../../../../redux/hooks'
 
 import './dropDown.scss'
@@ -13,7 +15,11 @@ const DropDownNavBar = () => {
   const isAuthorized = useAppSelector((state) => state.auth.isAuthorized)
 
   const handleClose = () => {
+    ApiAuth.logout()
+    Cookies.remove('token')
+    Cookies.remove('refreshToken')
     dispatch(logOut())
+    dispatch(removeUser())
     history.push('/')
   }
 
@@ -25,12 +31,8 @@ const DropDownNavBar = () => {
         id='navbarScrollingDropdown'
         className={!isAuthorized ? 'nav-item dropdown' : 'authorized'}
       >
-        <NavDropdown.Item
-          href='/login'>Войти
-        </NavDropdown.Item>
-        <NavDropdown.Item
-          href='/signup'>Зарегистрироваться
-        </NavDropdown.Item>
+        <NavDropdown.Item href='/login'>Войти</NavDropdown.Item>
+        <NavDropdown.Item href='/signup'>Зарегистрироваться</NavDropdown.Item>
       </NavDropdown>
 
       {/* for authorised user */}
@@ -38,13 +40,10 @@ const DropDownNavBar = () => {
         align={{lg: 'end'}}
         title={<i className='far fa-user icon-height user-signedin'></i>}
         id='navbarScrollingDropdown'
-        // className={true ? 'authorized change' : 'authorized'}
         className={isAuthorized ? 'authorized change' : 'authorized'}
       >
-        <NavDropdown.Item
-          href='/profile'>Профиль
-        </NavDropdown.Item>
-        <NavDropdown.Item href='/' onClick={() => handleClose()}>
+        <NavDropdown.Item as={Link} to='/profile'>Профиль</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to='/' onClick={() => handleClose()}>
           Выйти из профиля
         </NavDropdown.Item>
       </NavDropdown>

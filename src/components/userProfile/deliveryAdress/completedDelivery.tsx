@@ -1,66 +1,82 @@
-import {DeliveryAdressType} from '../../../common/types/userTypes'
-import {AppStoreType} from '../../../redux/reducers/rootReducer'
 import {useSelector} from 'react-redux'
 import {Col, Row} from 'react-bootstrap'
+import {useDispatch} from 'react-redux'
+import {DeliveryAdressType} from '../../../common/types/userTypes'
+import {AppStoreType} from '../../../redux/reducers/rootReducer'
+import {setUserPersonalDataTC} from '../../../redux/reducers/userReducer'
+
 
 type PropsType = {
   changeStatus: (status:boolean) => void
+  changeAbsent: (status:boolean) => void
 }
 
 const completedDelivery = (props:PropsType) => {
-  const delivery =
-    useSelector<AppStoreType, DeliveryAdressType>((state) => state.delivery)
+  const delivery = useSelector<AppStoreType,
+   DeliveryAdressType>((state) => state.user.userProfile)
+  const dispatch = useDispatch()
+
+  const userDeliveryData = {
+    homeNumber: '',
+    homePart: '',
+    street: '',
+    flat: '',
+  }
+
+  const delDelivery=()=>{
+    dispatch(setUserPersonalDataTC(userDeliveryData))
+    props.changeStatus(true)
+    props.changeAbsent(true)
+  }
 
   return (
-    <div >
-
-      <div className='info-block'>
-        <Row>
-        &#127984;
-          <Col sm={3}><div className='user-name'><h5>Город</h5></div></Col>
-          <Col sm={2}><div className='user-name'>
-            <h5>{delivery.city}</h5></div></Col>
-          <Col sm={7}></Col>
-        </Row>
-        <Row>
-        &#10153;
-          <Col sm={3}><div className='user-name'><h5>Улица</h5></div></Col>
-          <Col sm={2}><div className='user-name'>
-            <h5>{delivery.street}</h5></div></Col>
-          <Col sm={7}></Col>
-        </Row>
-        <Row>
-        &#10153;
-          <Col sm={3}><div className='user-name'><h5>Дом</h5></div></Col>
-          <Col sm={2}><div className='user-name'>
-            <h5>{delivery.home}</h5></div></Col>
-          <Col sm={7}></Col>
-        </Row>
-        <Row>
-        &#10153;
-          <Col sm={3}><div className='user-name'><h5>Корпус</h5></div></Col>
-          <Col sm={2}><div className='user-name'>
-            <h5>{delivery.homePart}</h5></div></Col>
-          <Col sm={7}></Col>
-        </Row>
-        <Row>
-        &#10153;
-          <Col sm={3}><div className='user-name'><h5>Квартира</h5></div></Col>
-          <Col sm={2}><div className='user-name'>
-            <h5>{delivery.flat}</h5></div></Col>
-          <Col sm={7}></Col>
-        </Row>
-      </div>
+    <div className='info-block'>
+      <Row>
+        <span style={{cursor: 'pointer', color: 'gray', textAlign: 'right'}}
+          onClick={()=>delDelivery()}
+        >
+          Удалить адрес
+        </span>
+      </Row>
+      <Row>
+        <Col><div className='user-name'>
+          <h5>г.Минск</h5></div>
+        </Col>
+      </Row>
+      <Row>
+        <Col><div className='user-name'>
+          <h5>Улица&nbsp;{delivery.street}</h5></div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className='user-name'>
+            <h5>Дом&nbsp;{delivery.homeNumber}</h5>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className='user-name'>
+            <h5>Корпус&nbsp;{delivery.homePart}</h5>
+          </div></Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className='user-name'>
+            <h5>Квартира&nbsp;{delivery.flat}</h5>
+          </div>
+        </Col>
+      </Row>
       <br/>
       <button
-        className='btn btn-outline-warning offset-md-10'
+        className='btn btn-outline-warning offset-md-9'
         onClick={()=>{
-          props.changeStatus(false)
+          props.changeStatus(true)
         }}
       >
         Изменить
       </button>
-
     </div>
 
   )

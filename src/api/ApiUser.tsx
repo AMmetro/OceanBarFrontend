@@ -1,35 +1,54 @@
-import axios from 'axios'
-import {url as baseURL} from './index'
+import Cookies from 'js-cookie'
 
-import {UserType} from '../../src/common/types/userTypes'
 import {DeliveryAdressType} from '../../src/common/types/userTypes'
-
-// const settings = {
-//   withCredentials: true
-// }
-
-const instance = axios.create({
-  baseURL,
-  // ...settings
-})
+import {$api} from './ApiAuth'
 
 export const ApiUser = {
-  userLogIn(data:any) {
-    return instance.post('users/auth', data)
+  getUserPersonalData(userId?:number) {
+    const token = Cookies.get('token')
+    {
+      return Promise.resolve(
+        $api.get(`users/${userId}`,
+          {headers: {Authorization: `Bearer ${token}`}}
+        )
+      )
+    }
   },
-  // userRegister(user:UserType) {
-  //   return instance.post('users/register', {data: user})
-  // },
-  getUserPersonalData() {
-    return instance.get('users/')
-  },
+
   getUserDeliveryData() {
-    return instance.get('users/')
+    return $api.get('users/')
   },
-  setUserPersonalData(userData:UserType) {
-    return instance.patch('users/', {userData})
+
+  setUserPersonalData(userData:any, tokenOld:any) {
+    const token = Cookies.get('token')
+    return Promise.resolve(
+      $api.patch( 'users/1', userData,
+        {headers: {Authorization: `Bearer ${token}`}}
+      )
+    )
   },
+
   setUserDeliveryData(deliveryData:DeliveryAdressType) {
-    return instance.patch('users/', {deliveryData})
+    return $api.patch('users/', {deliveryData})
+  },
+  checkUserPassword(token: string | undefined,
+    body?: {password: string, email: string}
+  ) {
+    return Promise.resolve(
+      $api.post(`users/auth`, body,
+        {headers: {Authorization: `Bearer ${token}`}}
+      )
+    )
+  },
+  changeUserPassword(token: string | undefined,
+    userId: number,
+    body?: {password: string}
+  ) {
+    return Promise.resolve(
+      $api.patch(`users/${userId}`, body,
+        {headers: {Authorization: `Bearer ${token}`}}
+      )
+    )
   }
 }
+

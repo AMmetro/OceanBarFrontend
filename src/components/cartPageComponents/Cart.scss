@@ -5,39 +5,30 @@ $mainColor: #ff9e05;
   padding: 30px 0;
   flex: 1 0 auto;
   font-size: 14px;
-
-
   .container {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
-
-
     .cart-title {
       font-size: 2.5rem;
       font-weight: bold;
       color: $mainColor;
       align-self: center;
     }
-
     .cart-empty {
       align-self: center;
       margin: 10rem 0 14rem;
       font-size: 1.2rem;
       color: #ccc;
     }
-
     .cart-section {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin: 50px 0;
+      min-width: 750px;
+      width: 77%;
+      margin: 60px 0;
       .section-title {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 15px;
         text-align: left;
+        font-weight: bold;
         font-size: 1.5rem;
         button.clear-button {
           font-size: 14px;
@@ -51,9 +42,13 @@ $mainColor: #ff9e05;
         }
       }
       .section-data {
+        margin: 20px 0;
+        &.options {
+          text-align: left;
+        }
         .order-item {
           display: flex;
-          margin-bottom: 10px;
+          margin: 1rem 0;
           padding: 15px 35px;
           .order-block {
             display: flex;
@@ -70,9 +65,9 @@ $mainColor: #ff9e05;
             align-items: flex-start;
             padding-left: 3rem;
             width: 18rem;
-            height: 9rem;
             .order-title {
               font-size: larger;
+              text-align: left;
             }
             a {
               padding-top: 20px;
@@ -108,10 +103,21 @@ $mainColor: #ff9e05;
               }
             }
           }
+
+          .short-notice {
+            font-size: smaller;
+            font-style: italic;
+            text-align: left;
+            margin-top: 7px;
+          }
+        }
+        .btn-outline-warning {
+          color: black;
         }
       }
       .cart-total {
         font-size: 1.2rem;
+        text-align: left;
       }
     }
 
